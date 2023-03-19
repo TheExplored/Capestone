@@ -20,7 +20,7 @@ spec:
       containers:
         - name: upg-loadme
           # update image id (manual or via jenkins)
-          image: '8261XXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/shashank-upg-loadme:1'
+          image: '107157217975.dkr.ecr.us-east-1.amazonaws.com/binisha-ecr-capstone:loadmeapp-capstone'
           # limiting cpu & mem usage of a pod
           resources:
             requests:
@@ -34,6 +34,16 @@ spec:
       terminationGracePeriodSeconds: 10
       dnsPolicy: ClusterFirst
       # add tolerations to restrict running on selected nodes
+      tolerations:
+      - key: "key1"
+        operator: "Equal"
+        value: "value1"
+        effect: "NoSchedule"
+      - key: "key1"
+        operator: "Equal"
+        value: "value1"
+        effect: "NoExecute"
+    
 
 ---
 kind: Service
@@ -44,7 +54,7 @@ metadata:
 spec:
   selector:
     app: upg-loadme
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - name: app-port
     protocol: TCP
