@@ -73,9 +73,9 @@ nodeGroups: # Refer: https://github.com/weaveworks/eksctl/blob/main/examples/05-
     instancesDistribution:
       instanceTypes:
         - t2.medium
-    desiredCapacity: 2
-    minSize: 2
-    maxSize: 2
+    desiredCapacity: 1
+    minSize: 0
+    maxSize: 3
     privateNetworking: true # include only in private subnet
     subnets:
       - my-private-201-a # 1 AZ is enough for testing
@@ -87,9 +87,9 @@ nodeGroups: # Refer: https://github.com/weaveworks/eksctl/blob/main/examples/05-
     instancesDistribution:
       instanceTypes:
         - t2.medium
-    desiredCapacity: 0
-    minSize: 0
-    maxSize: 1
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 2
     subnets:
       - my-public-201-a
 
